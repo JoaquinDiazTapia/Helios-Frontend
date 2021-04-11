@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, setState } from 'react';
-import Paneles from '../../../assets/images/qtt.png'
+import PowerImg from '../../../assets/images/power.png'
 
-const Cantidad = ({screenWidth}) => {
+const Potencia = ({screenWidth}) => {
 
-    const [cantidadPaneles, setCantidadPaneles] = useState('0');
+    const [potencia, setPotencia] = useState('0');
 
     const styles = {
       container: {
@@ -26,7 +26,8 @@ const Cantidad = ({screenWidth}) => {
         textAlign: 'center'
       },
       img: {
-        width: 120
+        width: 95,
+        margin: '10px 0'
       },
       values: {
           margin: 0,
@@ -39,12 +40,12 @@ const Cantidad = ({screenWidth}) => {
         <div style={styles.container}>
            <h3 style={styles.title}>Cantidad de paneles</h3>
            <div style={styles.item}>
-              <img src={Paneles} style={styles.img}></img>
-              <p style={styles.values}>{cantidadPaneles} und.</p>
+              <img src={PowerImg} style={styles.img}></img>
+              <p style={styles.values}>{potencia} Kw.</p>
            </div>
         </div>
 
     )
 }
 
-export default Cantidad
+export default Potencia

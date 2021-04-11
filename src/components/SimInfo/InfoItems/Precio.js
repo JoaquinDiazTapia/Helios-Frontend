@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, setState } from 'react';
-import Paneles from '../../../assets/images/qtt.png'
+import PrecioImg from '../../../assets/images/price.png'
 
-const Cantidad = ({screenWidth}) => {
+const Precio = ({screenWidth}) => {
 
-    const [cantidadPaneles, setCantidadPaneles] = useState('0');
+    const [precio, sePrecio] = useState('000000');
 
     const styles = {
       container: {
@@ -26,11 +26,17 @@ const Cantidad = ({screenWidth}) => {
         textAlign: 'center'
       },
       img: {
-        width: 120
+        width: 100,
+        margin: '10px 0'
       },
       values: {
           margin: 0,
           fontSize: '0.8rem'
+      },
+      valueSubt: {
+          margin: '2px 0',
+          fontSize: '0.7rem',
+          fontStyle: 'italic'
       }
     }
 
@@ -39,12 +45,13 @@ const Cantidad = ({screenWidth}) => {
         <div style={styles.container}>
            <h3 style={styles.title}>Cantidad de paneles</h3>
            <div style={styles.item}>
-              <img src={Paneles} style={styles.img}></img>
-              <p style={styles.values}>{cantidadPaneles} und.</p>
+              <img src={PrecioImg} style={styles.img}></img>
+              <p style={styles.values}>$ {precio}</p>
+              <p style={styles.valueSubt}>Incluye equipos e instalación</p>
            </div>
         </div>
 
     )
 }
 
-export default Cantidad
+export default Precio

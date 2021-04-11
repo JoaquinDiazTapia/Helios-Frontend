@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, setState, Select } from 'react';
-import { Range } from 'react-range'
 
 const RangeSlider = () => {
 
