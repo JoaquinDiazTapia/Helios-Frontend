@@ -5,12 +5,17 @@ import Nav from './components/Nav'
 import Title from './components/Title'
 import Inputs from './components/SimInputs/Inputs'
 import SimInfo from './components/SimInfo/SimInfo'
+import Form from './components/Form'
 
 import useWindowDimensions from './components/GetWindowWidth'
 
 const View = () => {
 
   const screenWidth = useWindowDimensions().width
+
+  const showForm = () => {
+    
+  }
 
   const styles = {
     container: {
@@ -33,6 +38,9 @@ const View = () => {
     },
     infoCont: {
       width: screenWidth >= 1000 ? '65%' : 'auto',
+    },
+    formContainer: {
+      margin: '40px 0'
     }
   }
 
@@ -47,11 +55,14 @@ const View = () => {
             <div style={styles.flexCont}>
               <Inputs screenWidth={screenWidth}></Inputs>
               <div style={styles.infoCont}>
-                <SimInfo screenWidth={screenWidth}></SimInfo>
+                <SimInfo showForm={showForm} screenWidth={screenWidth}></SimInfo>
               </div>
             </div>
           </div>
-        </div>       
+        </div>
+        <div style={styles.formContainer}>
+          <Form></Form>
+        </div>   
     </>
   );
 }

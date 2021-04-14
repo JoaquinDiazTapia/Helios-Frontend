@@ -1,6 +1,6 @@
 import React, { useState, setState } from 'react';
 import logo from '../assets/images/helios-logo.png'
-import Burger from '../components/Burger/Burger'
+import Burger from './Burger/Burger'
 import { motion } from 'framer-motion';
 
 const Nav = ({screenWidth}) => {

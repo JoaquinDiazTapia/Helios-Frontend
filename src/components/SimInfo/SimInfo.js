@@ -6,7 +6,7 @@ import Cantidad from './InfoItems/Cantidad'
 import Potencia from './InfoItems/Potencia'
 import Precio from './InfoItems/Precio'
 
-const SimInfo = ({ screenWidth }) => {
+const SimInfo = ({ screenWidth, showForm }) => {
 
     const styles = {
         container: {
@@ -48,7 +48,10 @@ const SimInfo = ({ screenWidth }) => {
                 <Potencia screenWidth={screenWidth}></Potencia>
                 <Precio screenWidth={screenWidth}></Precio>
             </div>
-            <div style={styles.nextStep}>
+            <div onClick={() => {
+                    showForm()
+                    }}
+                style={styles.nextStep}>
                 <motion.button
                     whileHover={{ scale: 1.08 }}
                     style={styles.btn}>
