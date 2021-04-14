@@ -12,7 +12,7 @@ const RangeSlider = () => {
 
         <div style={styles.container}>
             <p style={styles.label}>3. Selecciona el valor promedio de tu pago mensual (considera verano e invierno).</p>
-            <h4>${ rangeVal }</h4>
+            <h4>${ rangeVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }</h4>
             <input
                 style={styles.range}
                 type="range"
@@ -21,8 +21,8 @@ const RangeSlider = () => {
                 onChange={ (event) => setRangeVal(event.target.value)}>
             </input>
             <div style={styles.rangeContainer}>
-                <p style={styles.rangeValue}>${minVal}</p>
-                <p style={styles.rangeValue}>${maxVal}+</p>
+                <p style={styles.rangeValue}>${minVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</p>
+                <p style={styles.rangeValue}>${maxVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <br/> o más</p>
             </div>       
         </div>     
     )
