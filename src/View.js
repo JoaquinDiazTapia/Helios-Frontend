@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import './fonts.css'
 import './App.css';
+import { useState, setState } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import Nav from './components/Nav'
 import Title from './components/Title'
 import Inputs from './components/SimInputs/Inputs'
@@ -13,8 +15,18 @@ const View = () => {
 
   const screenWidth = useWindowDimensions().width
 
+  const [formClicked, setFormClicked] = useState(false)
+
+  const showStyle = formClicked ?
+                      { maxHeight: 2000, 
+                        margin: '40px auto',
+                        overflow: 'visible'}
+                        : 
+                        null
+
   const showForm = () => {
-    
+    setFormClicked(!formClicked)
+    scroll.scrollToBottom()
   }
 
   const styles = {
@@ -40,8 +52,11 @@ const View = () => {
       width: screenWidth >= 1000 ? '65%' : 'auto',
     },
     formContainer: {
-      margin: '40px auto',
-      maxWidth: 1000
+      margin: 0,
+      maxWidth: 1000,
+      height: 0,
+      overflow: 'hidden',
+      transition: 'height 0.9s'
     }
   }
 
@@ -61,7 +76,7 @@ const View = () => {
             </div>
           </div>
         </div>
-        <div style={styles.formContainer}>
+        <div id="formContainer" style={{...styles.formContainer,...showStyle}}>
           <Form></Form>
         </div>   
     </>
