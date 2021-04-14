@@ -12,7 +12,7 @@ const Potencia = ({screenWidth}) => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
-          alignSelf: 'stretch',
+          // alignSelf: 'stretch',
           padding: screenWidth >= 1000 ? '0 10px' : '0'
       },
       title: {
@@ -22,7 +22,7 @@ const Potencia = ({screenWidth}) => {
       },
       item: {
         position: 'relative',
-        marginTop: 5,
+        marginTop: 12,
         textAlign: 'center'
       },
       img: {

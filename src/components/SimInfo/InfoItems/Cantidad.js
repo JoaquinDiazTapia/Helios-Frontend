@@ -12,7 +12,7 @@ const Cantidad = ({screenWidth}) => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
-          alignSelf: 'stretch',
+          // alignSelf: 'stretch',
           padding: screenWidth >= 1000 ? '0 10px' : '0'
       },
       title: {
@@ -22,11 +22,12 @@ const Cantidad = ({screenWidth}) => {
       },
       item: {
         position: 'relative',
-        marginTop: 5,
+        marginTop: 10,
         textAlign: 'center'
       },
       img: {
-        width: 120
+        width: 114,
+        margin: '5px 0 0 0'
       },
       values: {
           margin: 0,

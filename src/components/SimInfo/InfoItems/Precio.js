@@ -26,8 +26,8 @@ const Precio = ({screenWidth}) => {
         textAlign: 'center'
       },
       img: {
-        width: 100,
-        margin: '10px 0'
+        width: 105,
+        margin: '15px 0 5px 0'
       },
       values: {
           margin: 0,

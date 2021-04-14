@@ -11,7 +11,7 @@ const Superficie = ({ screenWidth }) => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
-          alignSelf: 'stretch',
+          // alignSelf: 'stretch',
           padding: screenWidth >= 1000 ? '0 10px' : '0'
       },
       title: {
