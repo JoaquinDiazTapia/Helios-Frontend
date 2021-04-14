@@ -35,6 +35,12 @@ const Nav = ({screenWidth}) => {
             cursor: 'pointer',
             position: 'relative'
         },
+        test: {
+            marginLeft: '25px',
+            paddingRight: 20,
+            cursor: 'pointer',
+            position: 'relative'
+        },
         navText: {
             margin: screenWidth >= 1000 ? 0 : '15px 0'
         }
@@ -54,8 +60,9 @@ const Nav = ({screenWidth}) => {
 
             <div style={{...styles.navCont,...extraStyle}}>
                 <img src={logo} style={styles.logo} alt="logo"></img>
-                {menuItems.map((item) => 
-                <div style={styles.navBtn}>
+
+                {menuItems.map((item, i) => 
+                <div style={ menuItems.length -1 === i ? styles.test : styles.navBtn} key={i}>
                     <motion.p 
                         whileHover={{ scale: 1.1 }}
                         style={styles.navText}>
@@ -63,6 +70,7 @@ const Nav = ({screenWidth}) => {
                     </motion.p>
                 </div>
                 )}
+
             </div>
         </>   
     )
