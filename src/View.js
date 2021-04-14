@@ -40,7 +40,8 @@ const View = () => {
       width: screenWidth >= 1000 ? '65%' : 'auto',
     },
     formContainer: {
-      margin: '40px 0'
+      margin: '40px auto',
+      maxWidth: 1000
     }
   }
 
