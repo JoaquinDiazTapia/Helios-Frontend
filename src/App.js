@@ -1,13 +1,14 @@
 // import logo from './logo.svg';
 import './fonts.css'
-import './App.css';
+import './App.css'
 import View from './View'
+
 function App() {
   return (
     <div className="App">
-       <View></View>
+      <View />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
