@@ -1,20 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import Select from 'react-select'
 
 const Location = () => {
-  const optionsRegion = [
-    { value: 'hola', label: 'hola' },
-    { value: 'bye', label: 'bye' },
-  ]
+  const [optRegion, setOptRegion] = useState([])
 
-  const optionsComuna = [
-    { value: 'hola', label: 'hola' },
-    { value: 'bye', label: 'bye' },
-  ]
+  useEffect(() => {
+    if (optRegion.length === 0) {
+      axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(res => {
+          console.log(res.data)
+          setOptRegion(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }, [])
 
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [selectedComuna, setSelectedComuna] = useState(null)
+
+  const regionSelect = (e) => {
+    setSelectedRegion(e)
+  }
+
+  const [optComuna, setOptComuna] = useState([])
+
+  useEffect(() => {
+    const comunaList = optRegion.filter(item => item.name === selectedRegion.value)
+    console.log(comunaList)
+    setOptComuna(comunaList.map(item => item.address))
+  }, [selectedRegion])
 
   const customStyles = {
 
@@ -47,8 +65,8 @@ const Location = () => {
         <Select
           styles={customStyles}
           value={selectedRegion}
-          onChange={(e) => setSelectedRegion(e)}
-          options={optionsRegion}
+          onChange={(e) => regionSelect(e)}
+          options={optRegion.map(region => ({value: region.name, label: region.name}))}
           placeholder="Selecciona una región"
         />
       </div>
@@ -58,7 +76,7 @@ const Location = () => {
           styles={customStyles}
           value={selectedComuna}
           onChange={(e) => setSelectedComuna(e)}
-          options={optionsComuna}
+          options={optComuna.map(comuna => ({value: comuna.street, label: comuna.street}))}
           placeholder="Selecciona una comuna"
         />
       </div>
