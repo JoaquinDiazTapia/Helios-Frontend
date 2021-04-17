@@ -46,7 +46,7 @@ const Footer = ({ screenWidth }) => {
           baterías, etc. contáctanos directamente a
           <span> contacto@heliosenergia.cl </span>
           o llamando al
-          <span> +569 22223344</span>
+          <span> +569&nbsp;22223344</span>
         </p>
       </div>
       <div style={styles.iconCont}>
