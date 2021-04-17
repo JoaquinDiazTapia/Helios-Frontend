@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 
 import Select from 'react-select'
 
-const Location = () => {
-  const [optRegion, setOptRegion] = useState([])
-
+const Location = ({
+  selectedComuna,
+  selectedRegion,
+  optRegion,
+  optComuna,
+  setSelectedRegion,
+  setSelectedComuna,
+}) => {
   useEffect(() => {
     if (optRegion.length === 0) {
       axios.get(`${process.env.REACT_APP_BASE_URL}/regiones-y-comunas`)
@@ -14,28 +18,16 @@ const Location = () => {
           setOptRegion(res.data.results)
         })
         .catch((err) => {
-          // TODO fetching error , vista de erorr?
         })
     }
   }, [])
-
-  const [selectedRegion, setSelectedRegion] = useState(null)
-  const [selectedComuna, setSelectedComuna] = useState(null)
-
-  const regionSelect = (e) => {
-    setSelectedRegion(e)
-  }
-
   const [optComuna, setOptComuna] = useState([])
-
   useEffect(() => {
     if(selectedRegion) {
       const comunaList = optRegion.filter((item) => item.region.value === selectedRegion.value)
       setOptComuna(comunaList[0].comunas)
-      // console.log(comunaList[0].comunas)
     }
   }, [selectedRegion])
-
   const customStyles = {
 
     control: () => ({
@@ -67,7 +59,7 @@ const Location = () => {
         <Select
           styles={customStyles}
           value={selectedRegion}
-          onChange={(e) => regionSelect(e)}
+          onChange={(e) => setSelectedRegion(e)}
           options={optRegion.map((region) => ({
             value: region.region.value, label: region.region.label,
           }))}

@@ -17,6 +17,8 @@ const View = () => {
 
   const [formClicked, setFormClicked] = useState(false)
 
+  const [inputValues, setInputValues] = useState([])
+
   const showStyle = formClicked
     ? {
       height: 'auto',
@@ -97,7 +99,9 @@ const View = () => {
             <Title />
           </div>
           <div style={styles.flexCont}>
-            <Inputs screenWidth={screenWidth} />
+            <Inputs
+              setInputValues={setInputValues}
+              screenWidth={screenWidth} />
             <div style={styles.infoCont}>
               <SimInfo showForm={showForm} screenWidth={screenWidth} />
             </div>
