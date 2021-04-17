@@ -32,9 +32,6 @@ const styles = {
     width: '80%',
     marginBottom: 25,
   },
-  formBtn: {
-    // textAlign
-  },
   btn: {
     backgroundColor: '#00F9A8',
     color: '#2B4AAF',
