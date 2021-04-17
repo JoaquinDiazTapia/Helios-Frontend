@@ -18,6 +18,7 @@ const View = () => {
 
   const showStyle = formClicked
     ? {
+      height: 'auto',
       maxHeight: 2000,
       margin: '40px auto',
       overflow: 'visible',
