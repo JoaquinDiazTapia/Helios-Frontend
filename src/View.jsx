@@ -7,6 +7,7 @@ import Title from './components/Title'
 import Inputs from './components/SimInputs/Inputs'
 import SimInfo from './components/SimInfo/SimInfo'
 import Form from './components/Form'
+import Footer from './components/Footer'
 
 import useWindowDimensions from './components/GetWindowWidth'
 
@@ -77,6 +78,9 @@ const View = () => {
       </div>
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
         <Form />
+      </div>
+      <div>
+        <Footer screenWidth={screenWidth} />
       </div>
     </div>
   )

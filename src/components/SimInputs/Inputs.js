@@ -28,7 +28,6 @@ const Inputs = ({ screenWidth }) => {
       textAlign: 'center',
       margin: '0 auto',
       cursor: 'pointer',
-      // transition: '0.2s'
     },
   }
 
