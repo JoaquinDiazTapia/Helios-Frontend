@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 
 import useWindowDimensions from './components/GetWindowWidth'
 
-const View = () => {
+const View = ({ clickHandler }) => {
   const screenWidth = useWindowDimensions().width
 
   const [formClicked, setFormClicked] = useState(false)
@@ -78,7 +78,7 @@ const View = () => {
         </div>
       </div>
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
-        <Form />
+        <Form clickHandler={clickHandler} />
       </div>
       <div>
         <Footer screenWidth={screenWidth} />
