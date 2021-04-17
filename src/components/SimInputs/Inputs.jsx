@@ -9,13 +9,17 @@ const Inputs = ({ screenWidth, setInputValues }) => {
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [selectedComuna, setSelectedComuna] = useState(null)
 
+  const minVal = 2000
+  const maxVal = 300000
+
+  const [rangeVal, setRangeVal] = useState(minVal)
+
   const [optRegion, setOptRegion] = useState([])
 
   useEffect(() => {
     if (optRegion.length === 0) {
       axios.get('https://jsonplaceholder.typicode.com/users')
         .then((res) => {
-          // console.log(res.data)
           setOptRegion(res.data)
         })
         .catch((err) => {
@@ -72,7 +76,12 @@ const Inputs = ({ screenWidth, setInputValues }) => {
         selectedComuna={selectedComuna}
         setSelectedComuna={setSelectedComuna}
       />
-      <RangeSlider />
+      <RangeSlider
+        minVal={minVal}
+        maxVal={maxVal}
+        rangeVal={rangeVal}
+        setRangeVal={setRangeVal}
+      />
       <motion.button
         whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
         style={styles.btn}
