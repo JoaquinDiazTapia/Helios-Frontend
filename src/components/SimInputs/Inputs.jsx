@@ -5,15 +5,18 @@ import { motion } from 'framer-motion'
 import Location from './InputItem/Location'
 import RangeSlider from './InputItem/RangeSlider'
 
-const Inputs = ({ screenWidth, setInputValues }) => {
+const Inputs = ({
+  screenWidth,
+  setInputValues,
+  minVal,
+  rangeVal,
+  setRangeVal,
+  selectedComuna,
+  setSelectedComuna,
+  updateInputValues,
+}) => {
   const [selectedRegion, setSelectedRegion] = useState(null)
-  const [selectedComuna, setSelectedComuna] = useState(null)
-
-  const minVal = 2000
   const maxVal = 300000
-
-  const [rangeVal, setRangeVal] = useState(minVal)
-  const [optComuna, setOptComuna] = useState([])
   const [optRegion, setOptRegion] = useState([])
 
   useEffect(() => {
@@ -33,9 +36,9 @@ const Inputs = ({ screenWidth, setInputValues }) => {
     }
   }, [selectedRegion])
 
-  const updateInputValues = () => {
-    setInputValues([5, 10, 12, 4])
-  }
+  const [optComuna, setOptComuna] = useState([])
+
+ 
 
   const styles = {
     container: {
@@ -84,6 +87,7 @@ const Inputs = ({ screenWidth, setInputValues }) => {
         whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
         style={styles.btn}
         onClick={updateInputValues}
+        disabled={selectedComuna ? false : true}
       >
         Simular
       </motion.button>

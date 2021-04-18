@@ -33,17 +33,14 @@ const View = () => {
     scroll.scrollToBottom()
   }
 
+  const minVal = 2000
+  const [rangeVal, setRangeVal] = useState(minVal)
+  const [selectedComuna, setSelectedComuna] = useState(null)
+
   const [superficie, setSuperficie] = useState('000')
   const [cantidadPaneles, setCantidadPaneles] = useState('0')
   const [potencia, setPotencia] = useState('0')
   const [precio, setPrecio] = useState('000000')
-
-  useEffect(() => {
-    setSuperficie('000')
-    setCantidadPaneles('0')
-    setPotencia('0')
-    setPrecio('000000')
-  }, [])
 
   useEffect(() => {
     setSuperficie(inputValues[0])
@@ -52,31 +49,30 @@ const View = () => {
     setPrecio(inputValues[3])
   }, [inputValues])
 
-  // const { executeRecaptcha } = useGoogleReCaptcha()
+  const { executeRecaptcha } = useGoogleReCaptcha()
 
-  // const back = (currentToken) => { 
-  //   return fetch('http://localhost:5000.sendemail', {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       token: currentToken,
-  //       mail: 'yourOtherValue',
-  //     }),
-  //   }).then((response) => response.json().then((x) => console.log(x)))
-  // }
+  const fetchCotizacion = () => (
+    fetch(`${process.env.REACT_APP_BASE_URL}/calculos`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        boleta: rangeVal,
+        comuna: selectedComuna.value,
+      }),
+    }).then((response) => response.json().then((x) => console.log(x)))
+  )
 
-  // const clickHandler = async () => {
-  //   if (!executeRecaptcha) {
-  //     console.log('test')
-  //     return;
-  //   }
+  const updateInputValues = () => {
+    fetchCotizacion()
+  }
 
-  //   const result = await executeRecaptcha('Helios_form')
-  //   const haber = back(result)
-  // }
+  const clickHandler = async () => {
+    const result = await executeRecaptcha('Helios_form')
+    const haber = back(result)
+  }
 
   const styles = {
     container: {
@@ -120,7 +116,14 @@ const View = () => {
           <div style={styles.flexCont}>
             <Inputs
               setInputValues={setInputValues}
-              screenWidth={screenWidth} />
+              screenWidth={screenWidth}
+              minVal={minVal}
+              rangeVal={rangeVal}
+              setRangeVal={setRangeVal}
+              selectedComuna={selectedComuna}
+              setSelectedComuna={setSelectedComuna}
+              updateInputValues={updateInputValues}
+            />
             <div style={styles.infoCont}>
               <SimInfo
                 showForm={showForm}
