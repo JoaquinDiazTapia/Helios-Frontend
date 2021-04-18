@@ -29,8 +29,11 @@ const Location = () => {
   const [optComuna, setOptComuna] = useState([])
 
   useEffect(() => {
-    const comunaList = optRegion.filter((item) => item.name === selectedRegion.value)
-    setOptComuna(comunaList.map((item) => item.address))
+    if(selectedRegion) {
+      const comunaList = optRegion.filter((item) => item.region.value === selectedRegion.value)
+      setOptComuna(comunaList[0].comunas)
+      // console.log(comunaList[0].comunas)
+    }
   }, [selectedRegion])
 
   const customStyles = {
@@ -65,7 +68,9 @@ const Location = () => {
           styles={customStyles}
           value={selectedRegion}
           onChange={(e) => regionSelect(e)}
-          options={optRegion.map((region) => ({ value: region.name, label: region.name }))}
+          options={optRegion.map((region) => ({
+            value: region.region.value, label: region.region.label,
+          }))}
           placeholder="Selecciona una región"
         />
       </div>
@@ -75,7 +80,8 @@ const Location = () => {
           styles={customStyles}
           value={selectedComuna}
           onChange={(e) => setSelectedComuna(e)}
-          options={optComuna.map((comuna) => ({ value: comuna.street, label: comuna.street }))}
+          options={optComuna.map((comuna) => ({
+            value: comuna.value, label: comuna.label }))}
           placeholder="Selecciona una comuna"
         />
       </div>
