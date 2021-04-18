@@ -1,20 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import Select from 'react-select'
 
 const Location = () => {
-  const optionsRegion = [
-    { value: 'hola', label: 'hola' },
-    { value: 'bye', label: 'bye' },
-  ]
+  const [optRegion, setOptRegion] = useState([])
 
-  const optionsComuna = [
-    { value: 'hola', label: 'hola' },
-    { value: 'bye', label: 'bye' },
-  ]
+  useEffect(() => {
+    if (optRegion.length === 0) {
+      axios.get(`${process.env.REACT_APP_BASE_URL}/regiones-y-comunas`)
+        .then((res) => {
+          console.log(res.data.results)
+          setOptRegion(res.data.results)
+        })
+        .catch((err) => {
+          // TODO fetching error , vista de erorr?
+        })
+    }
+  }, [])
 
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [selectedComuna, setSelectedComuna] = useState(null)
+
+  const regionSelect = (e) => {
+    setSelectedRegion(e)
+  }
+
+  const [optComuna, setOptComuna] = useState([])
+
+  useEffect(() => {
+    if(selectedRegion) {
+      const comunaList = optRegion.filter((item) => item.region.value === selectedRegion.value)
+      setOptComuna(comunaList[0].comunas)
+      // console.log(comunaList[0].comunas)
+    }
+  }, [selectedRegion])
 
   const customStyles = {
 
@@ -47,8 +67,10 @@ const Location = () => {
         <Select
           styles={customStyles}
           value={selectedRegion}
-          onChange={(e) => setSelectedRegion(e)}
-          options={optionsRegion}
+          onChange={(e) => regionSelect(e)}
+          options={optRegion.map((region) => ({
+            value: region.region.value, label: region.region.label,
+          }))}
           placeholder="Selecciona una región"
         />
       </div>
@@ -58,7 +80,8 @@ const Location = () => {
           styles={customStyles}
           value={selectedComuna}
           onChange={(e) => setSelectedComuna(e)}
-          options={optionsComuna}
+          options={optComuna.map((comuna) => ({
+            value: comuna.value, label: comuna.label }))}
           placeholder="Selecciona una comuna"
         />
       </div>
