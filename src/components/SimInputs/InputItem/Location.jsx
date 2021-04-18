@@ -8,13 +8,13 @@ const Location = () => {
 
   useEffect(() => {
     if (optRegion.length === 0) {
-      axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(res => {
-          console.log(res.data)
-          setOptRegion(res.data)
+      axios.get(`${process.env.REACT_APP_BASE_URL}/regiones-y-comunas`)
+        .then((res) => {
+          console.log(res.data.results)
+          setOptRegion(res.data.results)
         })
-        .catch(err => {
-          console.log(err)
+        .catch((err) => {
+          // TODO fetching error , vista de erorr?
         })
     }
   }, [])
@@ -29,9 +29,8 @@ const Location = () => {
   const [optComuna, setOptComuna] = useState([])
 
   useEffect(() => {
-    const comunaList = optRegion.filter(item => item.name === selectedRegion.value)
-    console.log(comunaList)
-    setOptComuna(comunaList.map(item => item.address))
+    const comunaList = optRegion.filter((item) => item.name === selectedRegion.value)
+    setOptComuna(comunaList.map((item) => item.address))
   }, [selectedRegion])
 
   const customStyles = {
@@ -66,7 +65,7 @@ const Location = () => {
           styles={customStyles}
           value={selectedRegion}
           onChange={(e) => regionSelect(e)}
-          options={optRegion.map(region => ({value: region.name, label: region.name}))}
+          options={optRegion.map((region) => ({ value: region.name, label: region.name }))}
           placeholder="Selecciona una región"
         />
       </div>
@@ -76,7 +75,7 @@ const Location = () => {
           styles={customStyles}
           value={selectedComuna}
           onChange={(e) => setSelectedComuna(e)}
-          options={optComuna.map(comuna => ({value: comuna.street, label: comuna.street}))}
+          options={optComuna.map((comuna) => ({ value: comuna.street, label: comuna.street }))}
           placeholder="Selecciona una comuna"
         />
       </div>
