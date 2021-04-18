@@ -13,26 +13,24 @@ const Inputs = ({ screenWidth, setInputValues }) => {
   const maxVal = 300000
 
   const [rangeVal, setRangeVal] = useState(minVal)
-
+  const [optComuna, setOptComuna] = useState([])
   const [optRegion, setOptRegion] = useState([])
 
   useEffect(() => {
     if (optRegion.length === 0) {
-      axios.get('https://jsonplaceholder.typicode.com/users')
+      axios.get(`${process.env.REACT_APP_BASE_URL}/regiones-y-comunas`)
         .then((res) => {
-          setOptRegion(res.data)
+          setOptRegion(res.data.results)
         })
         .catch((err) => {
-          console.log(err)
         })
     }
   }, [])
-
-  const [optComuna, setOptComuna] = useState([])
-
   useEffect(() => {
-    const comunaList = optRegion.filter((item) => item.name === selectedRegion.value)
-    setOptComuna(comunaList.map((item) => item.address))
+    if (selectedRegion) {
+      const comunaList = optRegion.filter((item) => item.region.value === selectedRegion.value)
+      setOptComuna(comunaList[0].comunas)
+    }
   }, [selectedRegion])
 
   const updateInputValues = () => {

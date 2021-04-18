@@ -10,24 +10,6 @@ const Location = ({
   setSelectedRegion,
   setSelectedComuna,
 }) => {
-  useEffect(() => {
-    if (optRegion.length === 0) {
-      axios.get(`${process.env.REACT_APP_BASE_URL}/regiones-y-comunas`)
-        .then((res) => {
-          console.log(res.data.results)
-          setOptRegion(res.data.results)
-        })
-        .catch((err) => {
-        })
-    }
-  }, [])
-  const [optComuna, setOptComuna] = useState([])
-  useEffect(() => {
-    if(selectedRegion) {
-      const comunaList = optRegion.filter((item) => item.region.value === selectedRegion.value)
-      setOptComuna(comunaList[0].comunas)
-    }
-  }, [selectedRegion])
   const customStyles = {
 
     control: () => ({
@@ -72,8 +54,7 @@ const Location = ({
           styles={customStyles}
           value={selectedComuna}
           onChange={(e) => setSelectedComuna(e)}
-          options={optComuna.map((comuna) => ({
-            value: comuna.value, label: comuna.label }))}
+          options={optComuna.map((comuna) => ({ value: comuna.value, label: comuna.label }))}
           placeholder="Selecciona una comuna"
         />
       </div>
