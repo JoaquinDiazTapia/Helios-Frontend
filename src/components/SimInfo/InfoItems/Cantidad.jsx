@@ -1,17 +1,14 @@
-import React, { useState, setState } from 'react'
+import React from 'react'
 
-import PowerImg from '../../../assets/images/power.png'
+import Paneles from '../../../assets/images/qtt.png'
 
-const Potencia = ({ screenWidth }) => {
-  const [potencia, setPotencia] = useState('0')
-
+const Cantidad = ({ screenWidth, cantidadPaneles }) => {
   const styles = {
     container: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      // alignSelf: 'stretch',
       padding: screenWidth >= 1000 ? '0 10px' : '0',
     },
     title: {
@@ -21,12 +18,12 @@ const Potencia = ({ screenWidth }) => {
     },
     item: {
       position: 'relative',
-      marginTop: 12,
+      marginTop: 10,
       textAlign: 'center',
     },
     img: {
-      width: 95,
-      margin: '10px 0',
+      width: 114,
+      margin: '5px 0 0 0',
     },
     values: {
       margin: 0,
@@ -39,11 +36,11 @@ const Potencia = ({ screenWidth }) => {
     <div style={styles.container}>
       <h3 style={styles.title}>Cantidad de paneles</h3>
       <div style={styles.item}>
-        <img src={PowerImg} style={styles.img} />
+        <img src={Paneles} style={styles.img} alt="" />
         <p style={styles.values}>
-          {potencia}
+          {cantidadPaneles}
           {' '}
-          Kw.
+          und.
         </p>
       </div>
     </div>
@@ -51,4 +48,4 @@ const Potencia = ({ screenWidth }) => {
   )
 }
 
-export default Potencia
+export default Cantidad

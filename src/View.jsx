@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './fonts.css'
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import './App.css'
@@ -32,6 +32,25 @@ const View = () => {
     setFormClicked(!formClicked)
     scroll.scrollToBottom()
   }
+
+  const [superficie, setSuperficie] = useState('000')
+  const [cantidadPaneles, setCantidadPaneles] = useState('0')
+  const [potencia, setPotencia] = useState('0')
+  const [precio, setPrecio] = useState('000000')
+
+  useEffect(() => {
+    setSuperficie('000')
+    setCantidadPaneles('0')
+    setPotencia('0')
+    setPrecio('000000')
+  }, [])
+
+  useEffect(() => {
+    setSuperficie(inputValues[0])
+    setCantidadPaneles(inputValues[1])
+    setPotencia(inputValues[2])
+    setPrecio(inputValues[3])
+  }, [inputValues])
 
   // const { executeRecaptcha } = useGoogleReCaptcha()
 
@@ -103,7 +122,15 @@ const View = () => {
               setInputValues={setInputValues}
               screenWidth={screenWidth} />
             <div style={styles.infoCont}>
-              <SimInfo showForm={showForm} screenWidth={screenWidth} />
+              <SimInfo
+                showForm={showForm}
+                screenWidth={screenWidth}
+                inputValues={inputValues}
+                superficie={superficie}
+                cantidadPaneles={cantidadPaneles}
+                potencia={potencia}
+                precio={precio}
+              />
             </div>
           </div>
         </div>

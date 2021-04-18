@@ -1,10 +1,8 @@
-import React, { useState, setState } from 'react'
+import React from 'react'
 
 import PrecioImg from '../../../assets/images/price.png'
 
-const Precio = ({ screenWidth }) => {
-  const [precio, sePrecio] = useState('000000')
-
+const Precio = ({ screenWidth, precio }) => {
   const styles = {
     container: {
       display: 'flex',
@@ -44,7 +42,7 @@ const Precio = ({ screenWidth }) => {
     <div style={styles.container}>
       <h3 style={styles.title}>Cantidad de paneles</h3>
       <div style={styles.item}>
-        <img src={PrecioImg} style={styles.img} />
+        <img src={PrecioImg} style={styles.img} alt="" />
         <p style={styles.values}>
           $
           {precio}
