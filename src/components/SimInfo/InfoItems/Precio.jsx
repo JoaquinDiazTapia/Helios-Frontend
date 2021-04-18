@@ -49,7 +49,7 @@ const Precio = ({ screenWidth, precio }) => {
         <img src={PrecioImg} style={styles.img} alt="" />
         <p style={styles.values}>
           $
-          {precio}
+          {precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
         </p>
         <p style={styles.valueSubt}>Incluye equipos e instalación</p>
       </div>

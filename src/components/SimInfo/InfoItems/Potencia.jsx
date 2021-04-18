@@ -38,7 +38,7 @@ const Potencia = ({ screenWidth, potencia }) => {
       <div style={styles.item}>
         <img src={PowerImg} style={styles.img} alt="" />
         <p style={styles.values}>
-          {potencia}
+          {potencia.toString().replace('.', ',')}
           {' '}
           Kw.
         </p>
