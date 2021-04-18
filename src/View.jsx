@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './fonts.css'
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import './App.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Nav from './components/Nav'
@@ -49,7 +49,7 @@ const View = () => {
     setCantidadPaneles(valores.cantidad_de_paneles)
   }
 
-  const { executeRecaptcha } = useGoogleReCaptcha()
+  // const { executeRecaptcha } = useGoogleReCaptcha()
 
   const fetchCotizacion = () => (
     fetch(`${process.env.REACT_APP_BASE_URL}/calculos`, {
@@ -69,10 +69,10 @@ const View = () => {
     fetchCotizacion()
   }
 
-  const clickHandler = async () => {
-    const result = await executeRecaptcha('Helios_form')
-    const haber = back(result)
-  }
+  // const clickHandler = async () => {
+  //   const result = await executeRecaptcha('Helios_form')
+  //   const haber = back(result)
+  // }
 
   const styles = {
     container: {
