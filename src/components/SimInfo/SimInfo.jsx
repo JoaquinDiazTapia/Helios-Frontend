@@ -1,4 +1,4 @@
-import React, { useState, setState, useEffect } from 'react'
+import React from 'react'
 
 import { motion } from 'framer-motion'
 import Superficie from './InfoItems/Superficie'
@@ -6,7 +6,15 @@ import Cantidad from './InfoItems/Cantidad'
 import Potencia from './InfoItems/Potencia'
 import Precio from './InfoItems/Precio'
 
-const SimInfo = ({ screenWidth, showForm }) => {
+const SimInfo = ({
+  screenWidth,
+  showForm,
+  inputValues,
+  superficie,
+  cantidadPaneles,
+  potencia,
+  precio,
+}) => {
   const styles = {
     container: {
       color: '#fff',
@@ -42,10 +50,26 @@ const SimInfo = ({ screenWidth, showForm }) => {
 
     <div style={styles.container}>
       <div style={styles.itemsCont}>
-        <Superficie screenWidth={screenWidth} />
-        <Cantidad screenWidth={screenWidth} />
-        <Potencia screenWidth={screenWidth} />
-        <Precio screenWidth={screenWidth} />
+        <Superficie
+          screenWidth={screenWidth}
+          inputValues={inputValues}
+          superficie={superficie}
+        />
+        <Cantidad
+          screenWidth={screenWidth}
+          inputValues={inputValues}
+          cantidadPaneles={cantidadPaneles}
+        />
+        <Potencia
+          screenWidth={screenWidth}
+          inputValues={inputValues}
+          potencia={potencia}
+        />
+        <Precio
+          screenWidth={screenWidth}
+          inputValues={inputValues}
+          precio={precio}
+        />
       </div>
       <div
         onClick={() => {

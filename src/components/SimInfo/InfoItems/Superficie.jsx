@@ -1,15 +1,12 @@
-import React, { useState, setState } from 'react'
+import React from 'react'
 
-const Superficie = ({ screenWidth }) => {
-  const [superficie, setSuperficie] = useState('000')
-
+const Superficie = ({ screenWidth, superficie }) => {
   const styles = {
     container: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      // alignSelf: 'stretch',
       padding: screenWidth >= 1000 ? '0 10px' : '0',
     },
     title: {
