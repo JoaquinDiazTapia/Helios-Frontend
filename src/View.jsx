@@ -37,17 +37,17 @@ const View = () => {
   const [rangeVal, setRangeVal] = useState(minVal)
   const [selectedComuna, setSelectedComuna] = useState(null)
 
-  const [superficie, setSuperficie] = useState('000')
-  const [cantidadPaneles, setCantidadPaneles] = useState('0')
-  const [potencia, setPotencia] = useState('0')
-  const [precio, setPrecio] = useState('000000')
+  const [superficie, setSuperficie] = useState(0)
+  const [cantidadPaneles, setCantidadPaneles] = useState(0)
+  const [potencia, setPotencia] = useState(0)
+  const [precio, setPrecio] = useState(0)
 
-  useEffect(() => {
-    setSuperficie(inputValues[0])
-    setCantidadPaneles(inputValues[1])
-    setPotencia(inputValues[2])
-    setPrecio(inputValues[3])
-  }, [inputValues])
+  const dispatchInfo = (valores) => {
+    setSuperficie(valores.superficie)
+    setPotencia(valores.potencia)
+    setPrecio(valores.costo)
+    setCantidadPaneles(valores.cantidad_de_paneles)
+  }
 
   const { executeRecaptcha } = useGoogleReCaptcha()
 
@@ -62,7 +62,7 @@ const View = () => {
         boleta: rangeVal,
         comuna: selectedComuna.value,
       }),
-    }).then((response) => response.json().then((x) => console.log(x)))
+    }).then((response) => response.json().then((x) => dispatchInfo(x)))
   )
 
   const updateInputValues = () => {

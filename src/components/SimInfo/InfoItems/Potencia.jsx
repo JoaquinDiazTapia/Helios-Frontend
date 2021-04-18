@@ -34,7 +34,7 @@ const Potencia = ({ screenWidth, potencia }) => {
   return (
 
     <div style={styles.container}>
-      <h3 style={styles.title}>Cantidad de paneles</h3>
+      <h3 style={styles.title}>Potencia de tu sistema</h3>
       <div style={styles.item}>
         <img src={PowerImg} style={styles.img} alt="" />
         <p style={styles.values}>

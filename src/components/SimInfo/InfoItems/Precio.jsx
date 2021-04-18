@@ -40,7 +40,11 @@ const Precio = ({ screenWidth, precio }) => {
   return (
 
     <div style={styles.container}>
-      <h3 style={styles.title}>Cantidad de paneles</h3>
+      <h3 style={styles.title}>
+        Cuánto te
+        <br />
+        saldrá
+      </h3>
       <div style={styles.item}>
         <img src={PrecioImg} style={styles.img} alt="" />
         <p style={styles.values}>
