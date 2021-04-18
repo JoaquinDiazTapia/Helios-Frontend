@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './fonts.css'
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import './App.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Nav from './components/Nav'
@@ -29,6 +30,32 @@ const View = () => {
     setFormClicked(!formClicked)
     scroll.scrollToBottom()
   }
+
+  // const { executeRecaptcha } = useGoogleReCaptcha()
+
+  // const back = (currentToken) => { 
+  //   return fetch('http://localhost:5000.sendemail', {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       token: currentToken,
+  //       mail: 'yourOtherValue',
+  //     }),
+  //   }).then((response) => response.json().then((x) => console.log(x)))
+  // }
+
+  // const clickHandler = async () => {
+  //   if (!executeRecaptcha) {
+  //     console.log('test')
+  //     return;
+  //   }
+
+  //   const result = await executeRecaptcha('Helios_form')
+  //   const haber = back(result)
+  // }
 
   const styles = {
     container: {
@@ -78,7 +105,7 @@ const View = () => {
         </div>
       </div>
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
-        <Form />
+        <Form clickHandler={null} />
       </div>
       <div>
         <Footer screenWidth={screenWidth} />

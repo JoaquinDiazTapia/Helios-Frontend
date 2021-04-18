@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Form = () => (
+const Form = ({ clickHandler }) => (
   <form style={styles.form}>
     <label style={styles.label}>Nombre y apellido</label>
     <input style={styles.input} type="text" value="" />
@@ -11,7 +11,9 @@ const Form = () => (
     <label style={styles.label}>Teléfono</label>
     <input style={styles.input} type="text" value="" />
     <div style={styles.formBtn}>
-      <input style={styles.btn} type="submit" value="Enviar propuesta preliminar a mi correo" />
+      <button onClick={clickHandler} style={styles.btn} type="button">
+        Enviar propuesta preliminar a mi correo
+      </button>
     </div>
   </form>
 )

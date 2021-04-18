@@ -5,8 +5,10 @@ import View from './View'
 
 function App() {
   return (
-    <div className="App">
-      <View />
+    <div>
+      <div className="App">
+        <View />
+      </div>
     </div>
   )
 }
