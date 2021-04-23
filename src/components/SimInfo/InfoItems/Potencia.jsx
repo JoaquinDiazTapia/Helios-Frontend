@@ -27,7 +27,8 @@ const Potencia = ({ screenWidth, potencia }) => {
     },
     values: {
       margin: 0,
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
+      fontWeight: '700',
     },
   }
 
@@ -40,7 +41,7 @@ const Potencia = ({ screenWidth, potencia }) => {
         <p style={styles.values}>
           {potencia.toString().replace('.', ',')}
           {' '}
-          Kw.
+          kW.
         </p>
       </div>
     </div>
