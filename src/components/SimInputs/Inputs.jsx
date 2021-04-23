@@ -7,7 +7,6 @@ import RangeSlider from './InputItem/RangeSlider'
 
 const Inputs = ({
   screenWidth,
-  setInputValues,
   minVal,
   rangeVal,
   setRangeVal,
@@ -25,8 +24,7 @@ const Inputs = ({
         .then((res) => {
           setOptRegion(res.data.results)
         })
-        .catch((err) => {
-        })
+        .catch()
     }
   }, [])
   useEffect(() => {
@@ -37,8 +35,6 @@ const Inputs = ({
   }, [selectedRegion])
 
   const [optComuna, setOptComuna] = useState([])
-
- 
 
   const styles = {
     container: {
@@ -87,7 +83,7 @@ const Inputs = ({
         whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
         style={styles.btn}
         onClick={updateInputValues}
-        disabled={selectedComuna ? false : true}
+        disabled={!selectedComuna}
       >
         Simular
       </motion.button>

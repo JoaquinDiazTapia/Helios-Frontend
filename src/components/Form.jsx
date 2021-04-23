@@ -2,14 +2,22 @@ import React from 'react'
 
 const Form = ({ clickHandler }) => (
   <form style={styles.form}>
-    <label style={styles.label}>Nombre y apellido</label>
-    <input style={styles.input} type="text" value="" />
-    <label style={styles.label}>Dirección</label>
-    <input style={styles.input} type="text" value="" />
-    <label style={styles.label}>Email</label>
-    <input style={styles.input} type="text" value="" />
-    <label style={styles.label}>Teléfono</label>
-    <input style={styles.input} type="text" value="" />
+    <label style={styles.label} htmlFor="firstName">
+      Nombre y apellido
+      <input style={styles.input} type="text" value="" name="firstName" />
+    </label>
+    <label style={styles.label} htmlFor="direccion">
+      Dirección
+      <input style={styles.input} type="text" value="" name="direccion" />
+    </label>
+    <label style={styles.label} htmlFor="email">
+      Email
+      <input style={styles.input} type="text" value="" name="email" />
+    </label>
+    <label style={styles.label} htmlFor="telefono">
+      Teléfono
+      <input style={styles.input} type="text" value="" name="telefono" />
+    </label>
     <div style={styles.formBtn}>
       <button onClick={clickHandler} style={styles.btn} type="button">
         Enviar propuesta preliminar a mi correo
@@ -21,7 +29,7 @@ const Form = ({ clickHandler }) => (
 const styles = {
   form: {
     textAlign: 'center',
-    margin: '60px 0',
+    margin: '60px 10px',
   },
   label: {
     display: 'block',
@@ -31,8 +39,10 @@ const styles = {
     border: '1px solid #311A40',
     padding: '8px 5px',
     borderRadius: 20,
-    width: '80%',
+    width: '100%',
     marginBottom: 25,
+    marginTop: 10,
+    display: 'block',
   },
   btn: {
     backgroundColor: '#00F9A8',

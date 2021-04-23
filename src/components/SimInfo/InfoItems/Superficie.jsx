@@ -62,7 +62,8 @@ const Superficie = ({ screenWidth, superficie }) => {
     },
     values: {
       margin: 0,
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
+      fontWeight: '700',
     },
   }
 

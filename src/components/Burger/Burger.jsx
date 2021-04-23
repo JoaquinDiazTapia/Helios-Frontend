@@ -1,4 +1,4 @@
-import React, { useState, setState } from 'react'
+import React, { useState } from 'react'
 
 const Burger = ({ menuSlide }) => {
   const [isClicked, setIsClicked] = useState(false)
@@ -12,7 +12,8 @@ const Burger = ({ menuSlide }) => {
   const hamThree = { transform: isClicked ? 'rotate(-45deg) translate(0px, 6px)' : 'none' }
   return (
     <div style={styles.container}>
-      <div
+      <button
+        type="button"
         onClick={() => {
           hamX()
           menuSlide()
@@ -22,7 +23,7 @@ const Burger = ({ menuSlide }) => {
         <div style={{ ...styles.hamLine, ...hamOne }} />
         <div style={{ ...styles.hamLine, ...hamTwo }} />
         <div style={{ ...styles.hamLine, ...hamThree }} />
-      </div>
+      </button>
     </div>
   )
 }
@@ -40,6 +41,9 @@ const styles = {
     width: 35,
     top: 12,
     left: 15,
+    border: 'none',
+    backgroundColor: 'inherit',
+    padding: 0,
   },
   hamLine: {
     backgroundColor: '#fff',

@@ -72,12 +72,10 @@ const SimInfo = ({
         />
       </div>
       <div
-        onClick={() => {
-          showForm()
-        }}
         style={styles.nextStep}
       >
         <motion.button
+          onClick={() => { showForm() }}
           whileHover={{ scale: 1.08 }}
           style={styles.btn}
         >

@@ -1,6 +1,4 @@
-import React, { useState, setState } from 'react'
-
-import { motion } from 'framer-motion'
+import React from 'react'
 
 const Title = () => (
   <div>
@@ -14,7 +12,10 @@ const Title = () => (
       *Disponible solo para casas particulares
       {' '}
       <br />
-      <span style={styles.subtitleSpan}>(Si necesitas un sistema más complejo como off grid, baterías, etc, contáctanos directamente a contacto@helios.cl o llamando al +569 22223344)</span>
+      <span style={styles.subtitleSpan}>
+        (Si necesitas un sistema más complejo como off grid, baterías, etc,
+        contáctanos directamente a contacto@helios.cl o llamando al +569 22223344)
+      </span>
     </p>
   </div>
 )

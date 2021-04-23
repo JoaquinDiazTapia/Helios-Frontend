@@ -28,7 +28,8 @@ const Precio = ({ screenWidth, precio }) => {
     },
     values: {
       margin: 0,
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
+      fontWeight: '700',
     },
     valueSubt: {
       margin: '2px 0',
