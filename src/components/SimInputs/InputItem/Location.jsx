@@ -9,6 +9,7 @@ const Location = ({
   optComuna,
   setSelectedRegion,
   setSelectedComuna,
+  setDisabled,
 }) => {
   const customStyles = {
 
@@ -22,6 +23,10 @@ const Location = ({
     dropdownIndicator: () => ({
       color: '#2B4AAF',
       border: 'none',
+    }),
+    singleValue: () => ({
+      color: '#2B4AAF',
+      fontWeight: '500',
     }),
     indicatorSeparator: () => ({
       display: 'none',
@@ -53,7 +58,10 @@ const Location = ({
         <Select
           styles={customStyles}
           value={selectedComuna}
-          onChange={(e) => setSelectedComuna(e)}
+          onChange={(e) => {
+            setSelectedComuna(e)
+            setDisabled(false)
+          }}
           options={optComuna.map((comuna) => ({ value: comuna.value, label: comuna.label }))}
           placeholder="Selecciona una comuna"
         />

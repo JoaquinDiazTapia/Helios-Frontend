@@ -42,7 +42,11 @@ const View = () => {
   const [potencia, setPotencia] = useState(0)
   const [precio, setPrecio] = useState(0)
 
+  const [disabled, setDisabled] = useState(true)
+
   const dispatchInfo = (valores) => {
+    console.log(rangeVal)
+    console.log(selectedComuna)
     setSuperficie(valores.superficie)
     setPotencia(valores.potencia)
     setPrecio(valores.costo)
@@ -66,7 +70,9 @@ const View = () => {
   )
 
   const updateInputValues = () => {
+    
     fetchCotizacion()
+    setDisabled(true)
   }
 
   // const clickHandler = async () => {
@@ -123,6 +129,8 @@ const View = () => {
               selectedComuna={selectedComuna}
               setSelectedComuna={setSelectedComuna}
               updateInputValues={updateInputValues}
+              disabled={disabled}
+              setDisabled={setDisabled}
             />
             <div style={styles.infoCont}>
               <SimInfo
