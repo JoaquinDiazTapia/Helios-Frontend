@@ -147,7 +147,9 @@ const View = () => {
         </div>
       </div>
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
-        <Form clickHandler={null} />
+        <Form
+          clickHandler={null}
+        />
       </div>
       <div>
         <Footer screenWidth={screenWidth} />
