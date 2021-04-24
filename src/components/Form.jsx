@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const Form = () => {
+const Form = ({ postEmail }) => {
   const [nombre, setNombre] = useState('')
   const [direccion, setDireccion] = useState('')
   const [email, setEmail] = useState('')
   const [telefono, setTelefono] = useState('')
 
-  const [nombreError, setNombreErr] = useState({})
+  const [nombreError, setNombreErr] = useState()
   const [direccionError, setDireccionErr] = useState({})
   const [emailError, setEmailErr] = useState({})
   const [telefonoError, setTelefonoErr] = useState({})
@@ -16,8 +16,8 @@ const Form = () => {
     e.preventDefault()
     const isValid = formValidation()
     if (isValid) {
-      console.log('hola')
       // backend
+      postEmail(nombre, direccion, email, telefono)
       setNombre('')
       setDireccion('')
       setEmail('')
@@ -26,59 +26,54 @@ const Form = () => {
   }
 
   const formValidation = () => {
-    const nombreError = {}
-    const direccionError = {}
-    const emailError = {}
-    const telefonoError = {}
+    setNombreErr()
+    setDireccionErr()
+    setEmailErr()
+    setTelefonoErr()
 
     let isValid = true
 
     if (nombre === '') {
-      nombreError.emptyNombre = 'Debes ingresar un nombre'
+      setNombreErr('Debes ingresar un nombre')
       isValid = false
     }
-    if (nombre.trim().length > 0 && nombre.trim().length < 5) {
-      nombreError.nombreErrorShort = 'Nombre muy corto'
+    if (nombre.trim().length > 0 && nombre.trim().length < 4) {
+      setNombreErr('Nombre muy corto')
       isValid = false
     }
     if (!nombre.match(/^[a-zA-Z\s]*$/)) {
-      nombreError.nombreErrorLong = 'Tu nombre no puede contener números'
+      setNombreErr('Tu nombre no puede contener números')
       isValid = false
     }
-    setNombreErr(nombreError)
     if (direccion === '') {
-      direccionError.emptyDireccion = 'Debes ingresar tu dirección'
+      setDireccionErr('Debes ingresar tu dirección')
       isValid = false
     }
-    setDireccionErr(direccionError)
     if (email === '') {
-      emailError.emptyEmail = 'Debes ingresar un email'
+      setEmailErr('Debes ingresar un email')
       isValid = false
     }
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     if (!emailRegex.test(email) && email.trim().length > 0) {
-      emailError.invalidEmail = 'El email ingresado es inválido'
+      setEmailErr('El email ingresado es inválido')
       isValid = false
     }
-    setEmailErr(emailError)
     if (telefono.trim().length < 11 && telefono.match(/^-?\d+\.?\d*$/)) {
-      telefonoError.telefonoShort = 'Número de teléfono muy corto'
+      setTelefonoErr('Número de teléfono muy corto')
       isValid = false
     }
     if (telefono.trim().length > 11 && telefono.match(/^-?\d+\.?\d*$/)) {
-      telefonoError.telefonoShort = 'Número de teléfono muy largo'
+      setTelefonoErr('Número de teléfono muy largo')
       isValid = false
     }
     if (!telefono.match(/^\d+$/) && telefono.trim().length > 0) {
-      telefonoError.alphabetErr = 'Por favor, solo introducir números sin signo "+" ni espacios'
+      setTelefonoErr('Por favor, solo introducir números sin signo "+" ni espacios')
       isValid = false
     }
     if (telefono === '') {
-      telefonoError.emptyTelefono = 'Debes ingresar un número de teléfono'
+      setTelefonoErr('Debes ingresar un número de teléfono')
       isValid = false
     }
-    setTelefonoErr(telefonoError)
-
     return isValid
   }
 
@@ -93,13 +88,14 @@ const Form = () => {
             name="firstName"
             value={nombre}
             onChange={(e) => { setNombre(e.target.value) }}
+            placeholder="Rogelio Melendez"
           />
-          {Object.keys(nombreError).map((key) => (
+          { nombreError && (
             <div style={styles.errMsg}>
               *
-              {nombreError[key]}
+              {nombreError}
             </div>
-          ))}
+          )}
         </label>
         <label style={styles.label} htmlFor="direccion">
           Dirección
@@ -109,6 +105,7 @@ const Form = () => {
             name="direccion"
             value={direccion}
             onChange={(e) => { setDireccion(e.target.value) }}
+            placeholder="Av. Siempre Viva 123"
           />
           {Object.keys(direccionError).map((key) => (
             <div style={styles.errMsg}>
@@ -125,6 +122,7 @@ const Form = () => {
             name="email"
             value={email}
             onChange={(e) => { setEmail(e.target.value) }}
+            placeholder="rogielio98@gmail.com"
           />
           {Object.keys(emailError).map((key) => (
             <div style={styles.errMsg}>
@@ -141,6 +139,7 @@ const Form = () => {
             name="telefono"
             value={telefono}
             onChange={(e) => { setTelefono(e.target.value) }}
+            placeholder="56944139618"
           />
           {Object.keys(telefonoError).map((key) => (
             <div style={styles.errMsg}>

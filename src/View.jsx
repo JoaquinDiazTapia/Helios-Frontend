@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './fonts.css'
-// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import './App.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Nav from './components/Nav'
@@ -53,8 +53,6 @@ const View = () => {
     setCantidadPaneles(valores.cantidad_de_paneles)
   }
 
-  // const { executeRecaptcha } = useGoogleReCaptcha()
-
   const fetchCotizacion = () => (
     fetch(`${process.env.REACT_APP_BASE_URL}/calculos`, {
       method: 'POST',
@@ -70,15 +68,35 @@ const View = () => {
   )
 
   const updateInputValues = () => {
-    
     fetchCotizacion()
     setDisabled(true)
   }
 
-  // const clickHandler = async () => {
-  //   const result = await executeRecaptcha('Helios_form')
-  //   const haber = back(result)
-  // }
+  const { executeRecaptcha } = useGoogleReCaptcha()
+
+  const postEmail= async (nombre, direccion, email, telefono) => {
+    const result = await executeRecaptcha('SendMail')
+    return (
+      fetch(`${process.env.REACT_APP_BASE_URL}/sendEmail`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          boleta: rangeVal,
+          comuna: selectedComuna.value,
+          token: result,
+          datos_personales: {
+            name: nombre,
+            address: direccion,
+            email: email,
+            phone: telefono
+          }
+        }),
+      }).then((response) => response.json().then((x) => console.log(x)))
+    )
+  }
 
   const styles = {
     container: {
@@ -141,6 +159,7 @@ const View = () => {
                 cantidadPaneles={cantidadPaneles}
                 potencia={potencia}
                 precio={precio}
+                selectedComuna={selectedComuna}
               />
             </div>
           </div>
@@ -148,7 +167,7 @@ const View = () => {
       </div>
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
         <Form
-          clickHandler={null}
+          postEmail={postEmail}
         />
       </div>
       <div>
