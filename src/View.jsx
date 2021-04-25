@@ -9,6 +9,8 @@ import Inputs from './components/SimInputs/Inputs'
 import SimInfo from './components/SimInfo/SimInfo'
 import Form from './components/Form'
 import Footer from './components/Footer'
+import Mensaje from './components/Mensaje'
+import Loading from './components/Loading'
 
 import useWindowDimensions from './components/GetWindowWidth'
 
@@ -45,8 +47,6 @@ const View = () => {
   const [disabled, setDisabled] = useState(true)
 
   const dispatchInfo = (valores) => {
-    console.log(rangeVal)
-    console.log(selectedComuna)
     setSuperficie(valores.superficie)
     setPotencia(valores.potencia)
     setPrecio(valores.costo)
@@ -74,7 +74,11 @@ const View = () => {
 
   const { executeRecaptcha } = useGoogleReCaptcha()
 
-  const postEmail= async (nombre, direccion, email, telefono) => {
+  const toggleModal = () => {
+    setModalShow(!modalShow)
+  }
+
+  const postEmail = async (nombre, direccion, email, telefono) => {
     const result = await executeRecaptcha('SendMail')
     return (
       fetch(`${process.env.REACT_APP_BASE_URL}/sendEmail`, {
@@ -91,17 +95,30 @@ const View = () => {
             name: nombre,
             address: direccion,
             email: email,
-            phone: telefono
-          }
+            phone: telefono,
+          },
         }),
-      }).then((response) => response.json().then((x) => console.log(x)))
+      }).then((response) => response.json().then((x) => {
+        setMailRes(x.status); toggleModal(); toggleLoader()
+      }))
     )
+  }
+  const [mailRes, setMailRes] = useState()
+  const [modalShow, setModalShow] = useState(false)
+
+  const [isLoading, setIsLoading] = useState(false)
+  const toggleLoader = () => {
+    setIsLoading(!isLoading)
   }
 
   const styles = {
     container: {
       backgroundColor: '#2B4AAF',
       padding: screenWidth >= 1000 ? '120px 5vw' : '100px 5vw',
+      minHeight: '90vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     maxWidth: {
       maxWidth: '1200px',
@@ -131,6 +148,15 @@ const View = () => {
 
   return (
     <div>
+      {isLoading && (
+        <Loading />
+      )}
+      {modalShow && (
+        <Mensaje
+          mailRes={mailRes}
+          toggleModal={toggleModal}
+        />
+      )}
       <Nav screenWidth={screenWidth} />
       <div style={styles.container}>
         <div style={styles.maxWidth}>
@@ -168,6 +194,8 @@ const View = () => {
       <div id="formContainer" style={{ ...styles.formContainer, ...showStyle }}>
         <Form
           postEmail={postEmail}
+          toggleModal={toggleModal}
+          toggleLoader={toggleLoader}
         />
       </div>
       <div>

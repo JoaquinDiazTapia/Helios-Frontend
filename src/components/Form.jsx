@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const Form = ({ postEmail }) => {
+const Form = ({ postEmail, toggleLoader }) => {
   const [nombre, setNombre] = useState('')
   const [direccion, setDireccion] = useState('')
   const [email, setEmail] = useState('')
   const [telefono, setTelefono] = useState('')
 
   const [nombreError, setNombreErr] = useState()
-  const [direccionError, setDireccionErr] = useState({})
-  const [emailError, setEmailErr] = useState({})
-  const [telefonoError, setTelefonoErr] = useState({})
+  const [direccionError, setDireccionErr] = useState()
+  const [emailError, setEmailErr] = useState()
+  const [telefonoError, setTelefonoErr] = useState()
 
   const onSubmit = (e) => {
     e.preventDefault()
     const isValid = formValidation()
     if (isValid) {
-      // backend
       postEmail(nombre, direccion, email, telefono)
       setNombre('')
       setDireccion('')
@@ -107,12 +106,12 @@ const Form = ({ postEmail }) => {
             onChange={(e) => { setDireccion(e.target.value) }}
             placeholder="Av. Siempre Viva 123"
           />
-          {Object.keys(direccionError).map((key) => (
+          { direccionError && (
             <div style={styles.errMsg}>
               *
-              {direccionError[key]}
+              {direccionError}
             </div>
-          ))}
+          )}
         </label>
         <label style={styles.label} htmlFor="email">
           Email
@@ -124,12 +123,12 @@ const Form = ({ postEmail }) => {
             onChange={(e) => { setEmail(e.target.value) }}
             placeholder="rogielio98@gmail.com"
           />
-          {Object.keys(emailError).map((key) => (
+          {emailError && (
             <div style={styles.errMsg}>
               *
-              { emailError[key] }
+              {emailError}
             </div>
-          ))}
+          )}
         </label>
         <label style={styles.label} htmlFor="telefono">
           Teléfono
@@ -141,19 +140,19 @@ const Form = ({ postEmail }) => {
             onChange={(e) => { setTelefono(e.target.value) }}
             placeholder="56944139618"
           />
-          {Object.keys(telefonoError).map((key) => (
+          {telefonoError && (
             <div style={styles.errMsg}>
               *
-              { telefonoError[key] }
+              {telefonoError}
             </div>
-          ))}
+          )}
         </label>
         <div style={styles.formBtn}>
           <motion.button
             whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
-            // onClick={null}
             style={styles.btn}
             type="submit"
+            onClick={toggleLoader}
           >
             Enviar propuesta preliminar a mi correo
           </motion.button>
@@ -174,12 +173,13 @@ const styles = {
   },
   input: {
     border: '1px solid #311A40',
-    padding: '8px 5px',
+    padding: '8px 15px',
     borderRadius: 20,
     width: '100%',
     marginBottom: 10,
     marginTop: 10,
     display: 'block',
+    fontSize: 14,
   },
   btn: {
     backgroundColor: '#00F9A8',
