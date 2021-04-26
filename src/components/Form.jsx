@@ -17,6 +17,7 @@ const Form = ({ postEmail, toggleLoader }) => {
     const isValid = formValidation()
     if (isValid) {
       postEmail(nombre, direccion, email, telefono)
+      toggleLoader()
       setNombre('')
       setDireccion('')
       setEmail('')
@@ -152,7 +153,6 @@ const Form = ({ postEmail, toggleLoader }) => {
             whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
             style={styles.btn}
             type="submit"
-            onClick={toggleLoader}
           >
             Enviar propuesta preliminar a mi correo
           </motion.button>
