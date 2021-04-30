@@ -33,12 +33,16 @@ const Nav = ({ screenWidth }) => {
       paddingRight: 20,
       cursor: 'pointer',
       position: 'relative',
+      color: '#fff',
+      textDecoration: 'none',
     },
     test: {
       marginLeft: '25px',
       paddingRight: 20,
       cursor: 'pointer',
       position: 'relative',
+      color: '#fff',
+      textDecoration: 'none',
     },
     navText: {
       margin: screenWidth >= 1000 ? 0 : '15px 0',
@@ -46,6 +50,8 @@ const Nav = ({ screenWidth }) => {
   }
 
   const menuItems = ['Home', 'Energía Solar', 'Servicios', '¿Por qué Helios?', 'FAQ']
+  const anchors = ['', '#sectionTwo', '#sectionThree', '#sectionFour', 'faq']
+  const path = 'https://www.heliosenergia.cl/'
 
   const menuSlide = () => {
     setToggleMenu(!toggleMenu)
@@ -61,14 +67,17 @@ const Nav = ({ screenWidth }) => {
         <img src={logo} style={styles.logo} alt="logo" />
 
         {menuItems.map((item, i) => (
-          <div style={menuItems.length - 1 === i ? styles.test : styles.navBtn}>
+          <a
+            href={path + anchors[i]}
+            style={menuItems.length - 1 === i ? styles.test : styles.navBtn}
+          >
             <motion.p
               whileHover={{ scale: 1.1 }}
               style={styles.navText}
             >
               {item}
             </motion.p>
-          </div>
+          </a>
         ))}
 
       </div>
