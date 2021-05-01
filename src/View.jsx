@@ -45,6 +45,7 @@ const View = () => {
   const [precio, setPrecio] = useState(0)
 
   const [disabled, setDisabled] = useState(true)
+  const [formDisabled, setFormDisabled] = useState(true)
 
   const dispatchInfo = (valores) => {
     setSuperficie(valores.superficie)
@@ -153,6 +154,7 @@ const View = () => {
       )}
       {modalShow && (
         <Mensaje
+          setIsLoading={setIsLoading}
           mailRes={mailRes}
           toggleModal={toggleModal}
         />
@@ -175,6 +177,7 @@ const View = () => {
               updateInputValues={updateInputValues}
               disabled={disabled}
               setDisabled={setDisabled}
+              setFormDisabled={setFormDisabled}
             />
             <div style={styles.infoCont}>
               <SimInfo
@@ -185,7 +188,7 @@ const View = () => {
                 cantidadPaneles={cantidadPaneles}
                 potencia={potencia}
                 precio={precio}
-                selectedComuna={selectedComuna}
+                formDisabled={formDisabled}
               />
             </div>
           </div>

@@ -15,6 +15,7 @@ const Inputs = ({
   updateInputValues,
   disabled,
   setDisabled,
+  setFormDisabled,
 }) => {
   const [selectedRegion, setSelectedRegion] = useState(null)
   const maxVal = 300000
@@ -86,7 +87,7 @@ const Inputs = ({
       <motion.button
         whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
         style={styles.btn}
-        onClick={updateInputValues}
+        onClick={() => { updateInputValues(); setFormDisabled(false) }}
         disabled={disabled}
       >
         Simular

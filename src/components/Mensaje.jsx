@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const Mensaje = ({ mailRes, toggleModal }) => {
+const Mensaje = ({ mailRes, toggleModal, setIsLoading }) => {
   const styles = {
     container: {
       position: 'fixed',
@@ -79,7 +79,7 @@ const Mensaje = ({ mailRes, toggleModal }) => {
     <div style={styles.container}>
       <div style={styles.message}>
         <motion.div
-          onClick={toggleModal}
+          onClick={() => { toggleModal(); setIsLoading(false) }}
           style={styles.closeDiv}
           whileHover={{ scale: 1.1, rotate: 180 }}
           whileTap={{ scale: 0.9 }}
