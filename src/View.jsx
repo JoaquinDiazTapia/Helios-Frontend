@@ -95,7 +95,7 @@ const View = () => {
           datos_personales: {
             name: nombre,
             address: direccion,
-            email: email,
+            email,
             phone: telefono,
           },
         }),

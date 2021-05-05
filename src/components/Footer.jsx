@@ -31,6 +31,7 @@ const Footer = ({ screenWidth }) => {
     },
     icon: {
       width: 50,
+      height: '100%',
     },
     subt: {
       fontWeight: '500',
