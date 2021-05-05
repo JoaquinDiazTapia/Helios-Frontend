@@ -1,7 +1,11 @@
 import React from 'react'
 
 const RangeSlider = ({
-  minVal, maxVal, setRangeVal, rangeVal,
+  minVal,
+  maxVal,
+  setRangeVal,
+  rangeVal,
+  setDisabled,
 }) => {
   const styles = {
     container: {
@@ -46,7 +50,10 @@ const RangeSlider = ({
         type="range"
         min={minVal}
         max={maxVal}
-        onChange={(event) => setRangeVal(event.target.value)}
+        onChange={(event) => {
+          setRangeVal(event.target.value)
+          setDisabled(false)
+        }}
       />
       <div style={styles.rangeContainer}>
         <p style={styles.rangeValue}>

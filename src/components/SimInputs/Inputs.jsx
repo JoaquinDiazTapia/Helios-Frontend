@@ -13,6 +13,9 @@ const Inputs = ({
   selectedComuna,
   setSelectedComuna,
   updateInputValues,
+  disabled,
+  setDisabled,
+  setFormDisabled,
 }) => {
   const [selectedRegion, setSelectedRegion] = useState(null)
   const maxVal = 300000
@@ -72,18 +75,20 @@ const Inputs = ({
         selectedRegion={selectedRegion}
         selectedComuna={selectedComuna}
         setSelectedComuna={setSelectedComuna}
+        setDisabled={setDisabled}
       />
       <RangeSlider
         minVal={minVal}
         maxVal={maxVal}
         rangeVal={rangeVal}
         setRangeVal={setRangeVal}
+        setDisabled={setDisabled}
       />
       <motion.button
         whileHover={{ scale: 1.04, boxShadow: '1px 1px 7px grey' }}
         style={styles.btn}
-        onClick={updateInputValues}
-        disabled={!selectedComuna}
+        onClick={() => { updateInputValues(); setFormDisabled(false) }}
+        disabled={disabled}
       >
         Simular
       </motion.button>

@@ -14,6 +14,7 @@ const SimInfo = ({
   cantidadPaneles,
   potencia,
   precio,
+  formDisabled,
 }) => {
   const styles = {
     container: {
@@ -78,6 +79,7 @@ const SimInfo = ({
           onClick={() => { showForm() }}
           whileHover={{ scale: 1.08 }}
           style={styles.btn}
+          disabled={formDisabled}
         >
           Continuar a la cotización
         </motion.button>
