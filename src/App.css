@@ -19,6 +19,13 @@ input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
+  padding: 20px 5px 5px 5px;
+}
+
+@-moz-document url-prefix() { 
+  input[type=range] {
+    padding: 8px 5px;
+  }
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -51,7 +58,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 20px;
   background: transparent;
   cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  margin-top: -14px;
 }
 
 /* All the same stuff for Firefox */

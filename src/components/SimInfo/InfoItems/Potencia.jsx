@@ -27,7 +27,8 @@ const Potencia = ({ screenWidth, potencia }) => {
     },
     values: {
       margin: 0,
-      fontSize: '0.9rem',
+      fontSize: 18,
+      color: 'rgb(0, 249, 168)',
       fontWeight: '700',
     },
   }

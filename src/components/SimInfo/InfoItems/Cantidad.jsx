@@ -27,8 +27,9 @@ const Cantidad = ({ screenWidth, cantidadPaneles }) => {
     },
     values: {
       margin: 0,
-      fontSize: '0.9rem',
       fontWeight: '700',
+      fontSize: 18,
+      color: 'rgb(0, 249, 168)',
     },
   }
 

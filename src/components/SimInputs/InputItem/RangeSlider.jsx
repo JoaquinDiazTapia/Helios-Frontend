@@ -17,7 +17,7 @@ const RangeSlider = ({
     range: {
       width: '100%',
       border: '1px solid #2B4AAF',
-      padding: '8px 5px',
+      // padding: '18px 5px 5px 5px',
       backgroundColor: '#00F9A8',
       borderRadius: 20,
       color: '#2B4AAF',
