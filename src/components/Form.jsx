@@ -41,7 +41,7 @@ const Form = ({ postEmail, toggleLoader }) => {
       setNombreErr('Nombre muy corto')
       isValid = false
     }
-    if (!nombre.match(/^[a-zA-Z\s]*$/)) {
+    if (!nombre.match(/^[a-zA-Z\s\u00C0-\u00FF]*$/)) {
       setNombreErr('Tu nombre no puede contener números')
       isValid = false
     }
@@ -58,11 +58,11 @@ const Form = ({ postEmail, toggleLoader }) => {
       setEmailErr('El email ingresado es inválido')
       isValid = false
     }
-    if (telefono.trim().length < 11 && telefono.match(/^-?\d+\.?\d*$/)) {
+    if (telefono.trim().length < 9 && telefono.match(/^-?\d+\.?\d*$/)) {
       setTelefonoErr('Número de teléfono muy corto')
       isValid = false
     }
-    if (telefono.trim().length > 11 && telefono.match(/^-?\d+\.?\d*$/)) {
+    if (telefono.trim().length > 9 && telefono.match(/^-?\d+\.?\d*$/)) {
       setTelefonoErr('Número de teléfono muy largo')
       isValid = false
     }
@@ -88,7 +88,7 @@ const Form = ({ postEmail, toggleLoader }) => {
             name="firstName"
             value={nombre}
             onChange={(e) => { setNombre(e.target.value) }}
-            placeholder="Rogelio Melendez"
+            placeholder="Juan Perez"
           />
           { nombreError && (
             <div style={styles.errMsg}>
@@ -122,7 +122,7 @@ const Form = ({ postEmail, toggleLoader }) => {
             name="email"
             value={email}
             onChange={(e) => { setEmail(e.target.value) }}
-            placeholder="rogielio98@gmail.com"
+            placeholder="paneles@heliosenergia.cl"
           />
           {emailError && (
             <div style={styles.errMsg}>
@@ -133,14 +133,19 @@ const Form = ({ postEmail, toggleLoader }) => {
         </label>
         <label style={styles.label} htmlFor="telefono">
           Teléfono
-          <input
-            style={styles.input}
-            type="text"
-            name="telefono"
-            value={telefono}
-            onChange={(e) => { setTelefono(e.target.value) }}
-            placeholder="56944139618"
-          />
+          <div style={styles.phoneInputContainer}>
+            <span style={styles.phonePrefix}>
+              +56
+            </span>
+            <input
+              style={styles.inputPhone}
+              type="text"
+              name="telefono"
+              value={telefono}
+              onChange={(e) => { setTelefono(e.target.value) }}
+              placeholder="944139618"
+            />
+          </div>
           {telefonoError && (
             <div style={styles.errMsg}>
               *
@@ -170,6 +175,35 @@ const styles = {
   label: {
     display: 'block',
     marginBottom: 30,
+  },
+  phoneInputContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  phonePrefix: {
+    backgroundColor: '#FFF',
+    color: '#888',
+    fontSize: 14,
+    display: 'inline-block',
+    border: '1px solid #311A40',
+    borderRight: 'none',
+    padding: '8px 0px 7px 15px',
+    height: '100%',
+    borderRadius: '20px 0 0 20px',
+  },
+  inputPhone: {
+    border: '1px solid #311A40',
+    borderLeft: 'none',
+    padding: '8px 15px 8px 5px',
+    borderRadius: '0 20px 20px 0',
+    width: '100%',
+    marginBottom: 10,
+    marginTop: 10,
+    fontSize: 14,
+    display: 'inline-block',
   },
   input: {
     border: '1px solid #311A40',

@@ -27,8 +27,8 @@ const Superficie = ({ screenWidth, superficie }) => {
     },
     height: {
       position: 'absolute',
-      right: 'calc(-50% - 30px)',
-      top: '20%',
+      right: 'calc(-50% - 20px)',
+      top: '25%',
       margin: 0,
       transform: 'rotate(-90deg)',
       width: '100%',
@@ -90,11 +90,11 @@ const Superficie = ({ screenWidth, superficie }) => {
             <div style={styles.rangeBoundary} />
             <div style={styles.rangeBoundaryRight} />
           </div>
-          <p style={styles.values}>
+          {/* <p style={styles.values}>
             {superficie}
             {' '}
             m2.
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

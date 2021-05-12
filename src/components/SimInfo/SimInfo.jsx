@@ -28,6 +28,11 @@ const SimInfo = ({
       justifyContent: 'space-between',
       alignItems: screenWidth >= 1000 ? 'flex-start' : 'center',
     },
+    brief: {
+      width: screenWidth >= 1000 ? '50%' : '100%',
+      fontSize: '0.9rem',
+      margin: '40px auto',
+    },
     nextStep: {
       margin: screenWidth >= 1000 ? '60px auto 0 auto' : '40px 0',
       width: screenWidth >= 1000 ? '60%' : '100%',
@@ -72,6 +77,10 @@ const SimInfo = ({
           precio={precio}
         />
       </div>
+      <p style={styles.brief}>
+        Con este sistema tu cuenta de la luz se reducirá al mínimo,
+        la cual puede llegar a ser 0 a lo largo del año
+      </p>
       <div
         style={styles.nextStep}
       >
