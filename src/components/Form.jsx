@@ -190,8 +190,10 @@ const styles = {
     display: 'inline-block',
     border: '1px solid #311A40',
     borderRight: 'none',
-    padding: '8px 0px 7px 15px',
-    height: '100%',
+    marginBottom: 10,
+    marginTop: 10,
+    padding: '8px 0px 8px 15px',
+    height: 36,
     borderRadius: '20px 0 0 20px',
   },
   inputPhone: {
@@ -204,6 +206,7 @@ const styles = {
     marginTop: 10,
     fontSize: 14,
     display: 'inline-block',
+    height: 36,
   },
   input: {
     border: '1px solid #311A40',

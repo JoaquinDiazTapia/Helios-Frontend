@@ -89,9 +89,10 @@ const Mensaje = ({ mailRes, toggleModal, setIsLoading }) => {
             <div style={styles.right} />
           </div>
         </motion.div>
-        <h3 style={styles.title}>{mailRes === 200 ? '¡Recibido!' : 'Hubo un problema' }</h3>
+        <h3 style={styles.title}>{mailRes === 200 ? '¡Enviado!' : 'Hubo un problema' }</h3>
         <p>{mailRes === 200 ? 'Te enviamos un email con la cotización referencial para tu sistema.' : 'Estamos teniendo problemas de conexión. Por favor, inténtalo más tarde.'}</p>
-        {mailRes === 200 ? 'Sigue los pasos indicados para poder seguir con tu proyecto.' : null }
+        <p>{mailRes === 200 ? 'Sigue los pasos indicados para poder seguir con tu proyecto.' : null }</p>
+        <p><b>{mailRes === 200 ? '*Recuerda revisar tu carpeta de spam si no ves el mensaje en tu bandeja de entrada' : null }</b></p>
       </div>
     </div>
   )

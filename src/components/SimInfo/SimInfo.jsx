@@ -90,7 +90,7 @@ const SimInfo = ({
           style={styles.btn}
           disabled={formDisabled}
         >
-          Continuar a la cotización
+          Recibe la propuesta por correo
         </motion.button>
         <p style={styles.desc}>
           *Recuerda que estos valores son solo una estimación aproximada.
