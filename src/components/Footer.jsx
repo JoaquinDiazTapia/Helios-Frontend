@@ -45,9 +45,9 @@ const Footer = ({ screenWidth }) => {
         <p>
           Si necesitas un sistema más complejo como off grid,
           baterías, etc. contáctanos directamente a
-          <span> contacto@heliosenergia.cl </span>
+          <span> paneles@heliosenergia.cl </span>
           o llamando al
-          <span> +569&nbsp;22223344</span>
+          <span> +569&nbsp;43456424</span>
         </p>
       </div>
       <div style={styles.iconCont}>

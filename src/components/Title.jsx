@@ -14,7 +14,7 @@ const Title = () => (
       <br />
       <span style={styles.subtitleSpan}>
         (Si necesitas un sistema más complejo como off grid, baterías, etc,
-        contáctanos directamente a contacto@helios.cl o llamando al +569 22223344)
+        contáctanos directamente a paneles@heliosenergia.cl o llamando al +569 43456424)
       </span>
     </p>
   </div>
