@@ -159,7 +159,7 @@ const Form = ({ postEmail, toggleLoader }) => {
             style={styles.btn}
             type="submit"
           >
-            Continuar con la cotización
+            Enviar propuesta a mi correo
           </motion.button>
         </div>
       </form>
